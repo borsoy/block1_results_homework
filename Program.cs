@@ -7,44 +7,44 @@
 // ["1234", "1567", "-2", "computer science"] -> ["-2"]
 // ["Russia", "Denmark", "Kazan"] -> []
 
-string[] array;     
-Console.WriteLine("Введите массив строк через запятую (без пробела)");  
-string elementOfArray = Console.ReadLine();     
-array = elementOfArray.Split(',');              
+string[] array;     // Объявляем строковый массив
+Console.WriteLine("Введите массив строк через запятую (без пробела)");  // Предложение ввести массив из строк через запятую
+string elementOfArray = Console.ReadLine();     // Создём строковую переменную которой присвается значение из ввода
+array = elementOfArray.Split(',');              // Заполняем массив введенными значениями
 
-for (int i = 0; i < array.Length; i++)             
+for (int i = 0; i < array.Length; i++)             // Выводим первоначальный массив, до его конечного элемента
     Console.Write($"{array[i]}, ");
 
-int count = ArrayCheck(array);                   
-string[] resultArray = FillResultArray(array, count);       
+int count = ArrayCheck(array);                  // Создаем счетчик подсчета 
+string[] resultArray = FillResultArray(array, count);       // Объявляем массив, который будет заполняться нужными нам элементами
 int ArrayCheck(string[] array)
 {
-    int count = 0;                                
-    for (int i = 0; i < array.Length; i++)        
-    {                                          
+    int count = 0;                                // Объявляем переменную count, равную 0.Туда будем записывать количество строк, длина которых 3 символа и меньше
+    for (int i = 0; i < array.Length; i++)        // Проходимся по каждой строке массива. На каждой итерации сверяем длину строки - если условие (меньше либо равно трём символам) 
+    {                                          //соблюдается, инкрементируем count и инкрементируем i (счётчик цикла). Если длина больше трёх, инкрементируем только счётчик цикла (i++).
         if (array[i].Length <= 3) count++;
     }
     return count;
 }
-string[] FillResultArray(string[] array, int count)     
+string[] FillResultArray(string[] array, int count)     // Создаём массив из элементов, удовлетворяющих условию
 {
     string[] result = new string[count];
-    for (int i = 0; i < array.Length; i++)                 
+    for (int i = 0; i < array.Length; i++)                 // Цикл поиска строк, где количество элементов меньше или равно 3
     {
         if (array[i].Length <= 3)
         {
             result[result.Length - count] = array[i];
-            count--;                                               
+            count--;                                               // Уменьшаем счетчик (идем в обратную сторону)
         }
     }
     return result;
 }
-void PrintArray(string[] array)                        
+void PrintArray(string[] array)                         // Метод вывода результирующего массива
 {
     Console.WriteLine();
     for (int i = 0; i < array.Length - 1; i++) Console.Write($"{array[i]}, ");
     Console.Write($"{array[array.Length - 1]}");
 }
 
-Console.Write(" ->");           
-PrintArray(resultArray);           
+Console.Write(" ->");           // Для красоты :-)
+PrintArray(resultArray);           // Выводим резултирующий массив с помощью вызова метода PrintArray
