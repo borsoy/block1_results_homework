@@ -51,6 +51,7 @@ int ArrayCheck(string[] array)
 
 Создаём метод **string[] FillResultArray**, где на выходе возвращаем массив, заполненный строками, удовлетворяющими условию <= 3 символа.
 ```
+...
 string[] FillResultArray(string[] array, int count)
 {
     string[] result = new string[count];
@@ -65,9 +66,11 @@ string[] FillResultArray(string[] array, int count)
     return result;
 }
 ```
+...
 + ### Выводим результирующий массив на экран
 Создаем метод **PrintArray**, который выводит результирующий массив.
 ```
+...
 void PrintArray(string[] array)
 {
     Console.WriteLine();
@@ -75,8 +78,10 @@ void PrintArray(string[] array)
     Console.Write($"{array[array.Length - 1]}");
 }
 ```
+...
 Выводим результирующий массив на экран:
 ```
+...
 Console.Write(" ->");       // Для красоты :-)
 PrintArray(resultArray);
 ```
